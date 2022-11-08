@@ -10,7 +10,7 @@ const AddReview = ({ service }) => {
         event.preventDefault();
 
         const { email, displayName, photoURL, uid } = user;
-        const { name, c_id } = service;
+        const { name, _id } = service;
 
         const review = event.target.review.value;
         const reviewInfo = {
@@ -23,7 +23,7 @@ const AddReview = ({ service }) => {
             },
             serviceInfo: {
                 name,
-                c_id
+                _id
             }
         };
         console.log(reviewInfo);

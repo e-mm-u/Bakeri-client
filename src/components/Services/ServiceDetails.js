@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import Reviews from '../Reviews/Reviews';
 
 const ServiceDetails = () => {
-    const service = useLoaderData()[0];
+    const service = useLoaderData();
     const { photoURL, name, title, details, price, rating } = service;//useLoaderData()[0];
 
     return (
