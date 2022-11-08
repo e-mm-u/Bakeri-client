@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserAuthContextProvider';
 
 const Register = () => {
     const { createUser, updateUserProfile, loading, setloading} = useContext(AuthContext);
+    
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/' ;
 
     if (loading) {
-        return <div> Loading . . . . </div>
+        return <div> Loading . . register. . </div>
     }
 
     const handleRegister = event => {
@@ -33,7 +37,7 @@ const Register = () => {
                 updateUserProfile(updateUser)
                     .then(() => {console.log('user updated'); setloading(false)})
                     .catch(e => console.error(e))
-
+                navigate(from, { replace : true})
             })
             .catch((error) => {
                 console.error(`errorCode : ${error.code} \nerrorMessage ${error.message}`)

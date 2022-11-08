@@ -13,6 +13,7 @@ const UserAuthContextProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
     const login = (email, password) => {
+        setloading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 

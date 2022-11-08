@@ -1,9 +1,17 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/UserAuthContextProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const { login, googleLogin } = useContext(AuthContext);
+    const { login, googleLogin, loading } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/' ;
+
+    if (loading) {
+        return <div> Loading . . login . . </div>
+    }
 
     const handleLogin = event => {
         event.preventDefault();
@@ -20,6 +28,7 @@ const Login = () => {
                 console.log('user after login', user);
                 form.reset();
                 alert('logged in successfully');
+                navigate(from, {replace : true});
             })
             .catch((error) => {
                 console.error(`errorCode : ${error.code} \nerrorMessage ${error.message}`)
