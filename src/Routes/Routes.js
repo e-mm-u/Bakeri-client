@@ -22,11 +22,13 @@ const routes = createBrowserRouter([
             // ----------------------- services page
             {
                 path: '/services',
-                element: <Services></Services>
+                element: <Services></Services>,
+                loader : ()=> fetch('http://localhost:5000/services/') 
             },
             {
                 path: '/services/:id',
-                element: <ServiceDetails></ServiceDetails>
+                element: <ServiceDetails></ServiceDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
             },
             // ----------------------------- blog page
             {
