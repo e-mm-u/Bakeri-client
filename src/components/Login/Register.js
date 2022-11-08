@@ -3,28 +3,41 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserAuthContextProvider';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const { createUser, updateUserProfile, loading, setloading} = useContext(AuthContext);
+
+    if (loading) {
+        return <div> Loading . . . . </div>
+    }
+
     const handleRegister = event => {
         event.preventDefault();
-        console.log('clicked')
+
         const form = event.target;
         const name = form.name.value;
+        const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
 
-        const user = { email, password, name };
-        console.log('user before register',user);
+        // const user = { email, password, name, photo };
+        // console.log('user before register', user);
+        const updateUser = {
+            displayName: name,
+            photoURL: photo
+        }
 
         createUser(email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            console.log('user after register', user);
-            form.reset();
-            alert('Registered successfully');
-          })
-          .catch((error) => {
-            console.error(`errorCode : ${error.code} \nerrorMessage ${error.message}`)
-        });
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log('user after register', user);
+                form.reset();
+                updateUserProfile(updateUser)
+                    .then(() => {console.log('user updated'); setloading(false)})
+                    .catch(e => console.error(e))
+
+            })
+            .catch((error) => {
+                console.error(`errorCode : ${error.code} \nerrorMessage ${error.message}`)
+            });
     }
     return (
         <div>
@@ -37,10 +50,17 @@ const Register = () => {
                                     <span className="label-text">Name</span>
                                 </label>
                                 <input type="text" name='name' placeholder="name" className="input input-bordered" required />
+
+                                <label className="label">
+                                    <span className="label-text">PhotoURL</span>
+                                </label>
+                                <input type="text" name='photo' placeholder="photo url" className="input input-bordered" required />
+
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
@@ -50,7 +70,7 @@ const Register = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-2">
-                                <input type='submit' className="btn btn-primary mb-3" value='Register'/>
+                                <input type='submit' className="btn btn-primary mb-3" value='Register' />
                                 <button className="btn btn-warning">Continue with google</button>
                             </div>
                         </form>

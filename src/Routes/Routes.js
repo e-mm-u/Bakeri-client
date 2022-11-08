@@ -5,6 +5,7 @@ import Home from '../components/Home/Home';
 import Login from '../components/Login/Login';
 import Register from '../components/Login/Register';
 import NotFound from '../components/Others/NotFound';
+import AddReview from '../components/Reviews/AddReview';
 import ServiceDetails from '../components/Services/ServiceDetails';
 import Services from '../components/Services/Services';
 import Main from '../Layouts/Main';

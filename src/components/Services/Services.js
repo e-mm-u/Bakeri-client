@@ -6,9 +6,9 @@ const Services = () => {
     const services = useLoaderData();
     // console.log(services)
     return (
-        <div className='my-4'>
+        <div className='my-4 '>
             <h1 className='text-3xl flex justify-center font-bold mb-8'>Our Services</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-4'>
 
                 {
                     services.map(service =>

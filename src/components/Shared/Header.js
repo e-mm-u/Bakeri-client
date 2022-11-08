@@ -4,7 +4,10 @@ import { AuthContext } from '../../Contexts/UserAuthContextProvider';
 import logo from '../../images/favicon.ico'
 
 const Header = () => {
-    const { user, logout } = useContext(AuthContext);
+    const { user, logout} = useContext(AuthContext);
+    // if (loading) {
+    //     return <div> Loading . . . . </div>
+    // }
     const handlelogout = () => {
         logout()
         .then(()=>{})
@@ -27,9 +30,10 @@ const Header = () => {
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li> <Link to='/'>Profile</Link></li>
                             <li> <Link to='/'>Settings</Link></li>
-                            <li> <Link to='/'>Logout</Link></li>
+                            <li> <button onClick={handlelogout}>Logout</button></li>
                         </ul>
                     </div>
+                    <li className=''> Hi, {user.displayName}</li>
                     <li> <button onClick={handlelogout}>Logout</button></li>
                 </>
                 :
@@ -38,22 +42,20 @@ const Header = () => {
                     <li> <Link to='/login'>Login</Link></li>
                 </>
         }
-
-
     </>
     return (
-        <div className="navbar bg-base-100">
-            <div className="navbar-start">
+        <div className="flex justify-between items-center bg-base-100 mx-8 my-4">
+            <div className="">
                 <div className='flex align-center gap-1'>
                     <div><img src={logo} alt="logo" /></div>
                     <div> <Link to='/' className="btn btn-ghost normal-case text-3xl p-0">BakerY</Link></div>
                 </div>
             </div>
-            <div className="navbar-end ">
-                <ul className="menu menu-horizontal p-0 hidden lg:flex">
+            <div className="">
+                <ul className="hidden md:flex flex-wrap gap-3 items-center p-0" >
                     {menuItems}
                 </ul>
-                <div className="dropdown lg:hidden">
+                <div className="dropdown md:hidden">
                     <label tabIndex={0} className="btn btn-ghost btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>
