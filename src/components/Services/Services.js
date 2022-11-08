@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ServicesCard from './ServicesCard';
 
 const Services = () => {
     const services = useLoaderData();
+    const [displayServices] = useState(services);
     // console.log(services)
     return (
         <div className='my-4 '>
@@ -11,7 +12,7 @@ const Services = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-4'>
 
                 {
-                    services.map(service =>
+                    displayServices.map(service =>
                         <ServicesCard key={service._id} service={service}></ServicesCard>
                     )
                 }
