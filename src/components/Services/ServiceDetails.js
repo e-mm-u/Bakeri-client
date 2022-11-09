@@ -2,6 +2,8 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 import Reviews from '../Reviews/Reviews';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const ServiceDetails = () => {
     useTitle('ServiceDetails-Bakeri');
@@ -13,7 +15,11 @@ const ServiceDetails = () => {
         <div>
             {/* service details  */}
             <div>
-                <img src={photoURL} alt="" />
+                <PhotoProvider>
+                    <PhotoView src={photoURL}>
+                        <img src={photoURL} alt="" />
+                    </PhotoView>
+                </PhotoProvider>
                 <h1>{name}</h1>
                 <h3>{title}</h3>
                 <small>{details}</small>
