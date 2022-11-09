@@ -20,6 +20,10 @@ const MyReviews = () => {
 
     }, [user?.email])
 
+
+      // ____________________________________________
+    //_______ handle review update ___
+    
     // ____________________________________________
     //_______ handle review delete ___
     const handleReviewDelete = id => {
@@ -35,6 +39,7 @@ const MyReviews = () => {
             }
         })
     }
+    // _______________________________________________________________________
 
     return (
         <div>
@@ -51,7 +56,7 @@ const MyReviews = () => {
                         {
                             myreviews.map(review =>
                                 <MyReviewsRow
-                                    key={review._id}
+                                    key={review._id} 
                                     myreview={review} 
                                     handleReviewDelete={handleReviewDelete}
                                 ></MyReviewsRow>

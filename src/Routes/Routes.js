@@ -11,6 +11,7 @@ import Main from '../Layouts/Main';
 import PrivateRoutes from './PrivateRoutes';
 import MyReviews from '../components/Reviews/MyReviews'
 import AddService from '../components/Services/AddService';
+import UpdateReview from '../components/Reviews/UpdateReview';
 
 const routes = createBrowserRouter([
     {
@@ -41,6 +42,11 @@ const routes = createBrowserRouter([
             {
                 path : '/myReviews',
                 element : <PrivateRoutes> <MyReviews></MyReviews> </PrivateRoutes>,
+            },
+            {
+                path : '/myReviews/edit/:id',
+                element : <UpdateReview> </UpdateReview> ,
+                loader : ({params}) => fetch(`http://localhost:5000/reviews?id=${params.id}`)
             },
             // ----------------------------- blog page
             {
