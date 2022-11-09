@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/UserAuthContextProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
+    useTitle('Login-Bakeri');
+
     const { login, googleLogin, loading } = useContext(AuthContext);
 
     const navigate = useNavigate();

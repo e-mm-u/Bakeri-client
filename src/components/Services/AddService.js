@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
+    useTitle('AddServices-Bakeri');
 
     const [service, setService] = useState({});
 

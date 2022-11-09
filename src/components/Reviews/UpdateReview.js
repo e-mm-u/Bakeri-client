@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const UpdateReview = () => {
+    useTitle('AddReviews-Bakeri');
+
     const myReview = useLoaderData()[0];
     const { _id, review } = myReview;
 

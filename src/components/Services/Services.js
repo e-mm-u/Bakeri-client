@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import ServicesCard from './ServicesCard';
 
 const Services = () => {
+    useTitle('services-Bakeri');
+
     const services = useLoaderData();
     const [displayServices] = useState(services);
     // console.log(services)

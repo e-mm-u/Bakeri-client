@@ -1,8 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserAuthContextProvider';
+import useTitle from '../../hooks/useTitle';
 
 const AddReview = ({ service }) => {
+    useTitle('AddReviews-Bakeri');
+
     const { user } = useContext(AuthContext);
     const [review, setReview] = useState({})
     // ------------------ create and set review ---------

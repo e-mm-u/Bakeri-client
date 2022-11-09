@@ -36,7 +36,7 @@ const routes = createBrowserRouter([
             },
             {
                 path : '/services/add',
-                element : <AddService></AddService>
+                element : <PrivateRoutes> <AddService></AddService> </PrivateRoutes> 
             },
             //  ------------------ reviews
             {

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../hooks/useTitle';
 import AddReview from './AddReview';
 import ReviewCard from './ReviewCard';
 
 const Reviews = ({ service }) => {
+    useTitle('Reviews-Bakeri');
+
     const { _id } = service;
     const [allReviews, setAllreviews] = useState([]);
-    useEffect(()=>{
+    useEffect(() => {
         fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
-        .then(res => res.json())
-        .then(data => {setAllreviews(data); console.log(data)})
-    },[_id])
+            .then(res => res.json())
+            .then(data => { setAllreviews(data); console.log(data) })
+    }, [_id])
 
     return (
         <div>
