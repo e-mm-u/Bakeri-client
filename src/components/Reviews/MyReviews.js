@@ -6,6 +6,8 @@ const MyReviews = () => {
     const { user } = useContext(AuthContext);
     const [myreviews, setMyreviews] = useState([]);
 
+    // ____________________________________________
+    //_______fetch myreviews based on user email___
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?email=${user.email}`, {
             // pore jwt er kaj hobe ekhane
@@ -17,6 +19,22 @@ const MyReviews = () => {
             .then(data => setMyreviews(data))
 
     }, [user?.email])
+
+    // ____________________________________________
+    //_______ handle review delete ___
+    const handleReviewDelete = id => {
+        fetch(`http://localhost:5000/reviews/${id}`, {
+            method : 'DELETE',
+        })
+        .then( res => res.json())
+        .then( data => {
+            if(data.deletedCount > 0){
+                alert('deleted successfully')
+                const remainingReviews = myreviews.filter(review => review._id !== id);
+                setMyreviews(remainingReviews);
+            }
+        })
+    }
 
     return (
         <div>
@@ -30,14 +48,15 @@ const MyReviews = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {
-                        myreviews.map(review =>
-                            <MyReviewsRow
-                                key={review._id}
-                                myreview={review}
-                            ></MyReviewsRow>
-                        )
-                    }
+                        {
+                            myreviews.map(review =>
+                                <MyReviewsRow
+                                    key={review._id}
+                                    myreview={review} 
+                                    handleReviewDelete={handleReviewDelete}
+                                ></MyReviewsRow>
+                            )
+                        }
                     </tbody>
                 </table>
             </div>

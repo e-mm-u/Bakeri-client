@@ -1,7 +1,7 @@
 import React from 'react';
 
-const MyReviewsRow = ({myreview}) => {
-    const {serviceInfo, review} = myreview;
+const MyReviewsRow = ({myreview, handleReviewDelete}) => {
+    const {serviceInfo, review, _id} = myreview;
     return (
         <tr>
             <td>
@@ -17,7 +17,7 @@ const MyReviewsRow = ({myreview}) => {
             </td>
             <td>
                 <button className="btn btn-ghost btn-xs">Update</button>
-                <button className="btn btn-ghost btn-xs">Delete</button>
+                <button onClick={()=> handleReviewDelete(_id)} className="btn btn-ghost btn-xs">Delete</button>
             </td>
         </tr>
     );
