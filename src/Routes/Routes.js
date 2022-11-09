@@ -40,7 +40,7 @@ const routes = createBrowserRouter([
             //  ------------------ reviews
             {
                 path : '/myReviews',
-                element : <PrivateRoutes> <MyReviews></MyReviews> </PrivateRoutes>
+                element : <PrivateRoutes> <MyReviews></MyReviews> </PrivateRoutes>,
             },
             // ----------------------------- blog page
             {

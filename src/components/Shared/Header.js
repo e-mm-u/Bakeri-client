@@ -19,7 +19,7 @@ const Header = () => {
             user?.uid ?
                 <>
                     <li> <Link to='/services/add'>Add Services</Link></li>
-                    <li> <Link to='/myReviews'>My reviews</Link></li>
+                    <li> <Link to={`/myReviews`}>My reviews</Link></li>
                     <li> <Link to='/blogs'>Blogs</Link></li>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
