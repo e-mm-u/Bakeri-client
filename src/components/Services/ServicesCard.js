@@ -20,7 +20,7 @@ const ServicesCard = ({ service }) => {
                 <p>{title}</p>
                 <small>{details.slice(0, 100)}</small>
                 <div className="card-actions justify-end">
-                    <Link to={`/services/${_id}`}> Details </Link>
+                    <Link to={`/services/${_id}`} className='btn btn-warning'> Details </Link>
                 </div>
             </div>
         </div>

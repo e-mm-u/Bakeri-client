@@ -4,14 +4,15 @@ import { AuthContext } from '../../Contexts/UserAuthContextProvider';
 import logo from '../../images/favicon.ico'
 
 const Header = () => {
-    const { user, logout} = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     // if (loading) {
     //     return <div> Loading . . . . </div>
     // }
     const handlelogout = () => {
+        console.log('logout clicked')
         logout()
-        .then(()=>{})
-        .then(()=>{})
+            .then(() => { })
+            .catch((err) => {console.error(err) })
     }
     const menuItems = <>
         <li> <Link to='/services'>Services</Link></li>
@@ -44,7 +45,7 @@ const Header = () => {
         }
     </>
     return (
-        <div className="flex justify-between items-center bg-amber-100 p-4">
+        <div className="flex justify-between items-center bg-base-200 p-4">
             <div className="">
                 <div className='flex align-center gap-1'>
                     <div><img src={logo} alt="logo" /></div>
@@ -60,7 +61,7 @@ const Header = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        { menuItems }
+                        {menuItems}
                     </ul>
                 </div>
             </div>

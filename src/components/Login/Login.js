@@ -59,13 +59,13 @@ const Login = () => {
         googleLogin()
             .then((result) => {
                 const user = result.user;
-                console.log('user after google login', user)
+                console.log('user after google login', user);
+                alert('logged in successfully');
+                navigate(from, { replace: true });
             })
             .catch((error) => {
                 console.error(`errorCode : ${error.code} \nerrorMessage ${error.message}`)
             });
-
-
     }
     return (
         <div>
