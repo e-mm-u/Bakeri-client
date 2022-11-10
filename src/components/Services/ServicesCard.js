@@ -18,7 +18,7 @@ const ServicesCard = ({ service }) => {
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <p>{title}</p>
-                <small>{details.slice(0, 100)}</small>
+                <small>{details.slice(0, 100)}...</small>
                 <div className="card-actions justify-end">
                     <Link to={`/services/${_id}`} className='btn btn-warning'> Details </Link>
                 </div>

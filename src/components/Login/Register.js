@@ -13,7 +13,11 @@ const Register = () => {
     const from = location.state?.from?.pathname || '/' ;
 
     if (loading) {
-        return <div> Loading . . register. . </div>
+        return (<div className="flex justify-center items-center h-[30vh]">
+            <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+        </div>)
     }
 
     const handleRegister = event => {
@@ -38,7 +42,7 @@ const Register = () => {
                 console.log('user after register', user);
                 form.reset();
                 updateUserProfile(updateUser)
-                    .then(() => {console.log('user updated'); setloading(false)})
+                    .then(() =>{ console.log('user updated') ; setloading(false)})
                     .catch(e => console.error(e))
                 navigate(from, { replace : true})
             })

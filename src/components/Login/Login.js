@@ -13,7 +13,11 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     if (loading) {
-        return <div> Loading . . login . . </div>
+        return (<div className="flex justify-center items-center h-[30vh]">
+            <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+        </div>)
     }
 
     const handleLogin = event => {
@@ -31,23 +35,8 @@ const Login = () => {
                 console.log('user after login', user);
                 // const currentUser = { email: user.email }
                 form.reset();
-                // alert('logged in successfully');
-
+                alert('logged in successfully');
                 navigate(from, { replace: true });
-                return (
-                    <div className="toast toast-center">
-                        <div className="alert alert-info">
-                            <div>
-                                <span>New mail arrived.</span>
-                            </div>
-                        </div>
-                        <div className="alert alert-success">
-                            <div>
-                                <span>Message sent successfully.</span>
-                            </div>
-                        </div>
-                    </div>
-                )
 
                 //  get jwt token __ R I P ___
                 // fetch('https://bakery-server.vercel.app/jwt', {

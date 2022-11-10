@@ -10,6 +10,7 @@ const UserAuthContextProvider = ({children}) => {
     const [loading, setloading] = useState(false);
 
     const createUser = (email, password) => {
+        setloading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
     const login = (email, password) => {
@@ -23,11 +24,13 @@ const UserAuthContextProvider = ({children}) => {
     }
 
     const googleLogin = () => {
+        setloading(true);
         const provider = new GoogleAuthProvider();
         return signInWithPopup(auth, provider);
     }
 
     const logout = () => {
+        setloading(true);
         return signOut(auth);
     }
 
