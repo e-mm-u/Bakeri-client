@@ -51,19 +51,19 @@ const AddReview = ({ service }) => {
     return (
         <div>
             {user ?
-                <>
+                <div className='text-center'>
                     <form onSubmit={handleAddReview} className="form-control">
-                        <div>
+                        <div className='flex flex-col items-center justify-center'>
                             <label className="label">
-                                <span className="label-text">Write a review :</span>
+                                <span className="label-text text-lg font-semibold">Write a review :</span>
                             </label>
                             <textarea onBlur={createReview} type="text" name='review' placeholder=" " className="textarea textarea-bordered h-24 w-full max-w-sm" required />
                         </div>
-                        <div>
-                            <input type="submit" value="Add" className='btn' />
+                        <div className='my-3'>
+                            <input type="submit" value="Add review" className='btn btn-warning' />
                         </div>
                     </form>
-                </>
+                </div>
                 :
                 <>
                     <label htmlFor="my-modal" className="btn">Add review</label>

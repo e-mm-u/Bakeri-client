@@ -37,16 +37,16 @@ const AddService = () => {
     }
 
     return (
-        <div>
-            <h1>Add a service</h1>
+        <div className='text-center my-4 p-5'>
+            <h1 className='text-xl font-semibold my-4'>Add a service</h1>
             <form onSubmit={handleAddService}>
-                <input onBlur={handleInput} type="text" name="name" placeholder='Service Name' required /> <br /> <br />
-                <input onBlur={handleInput} type="text" name="title" placeholder='Title' required /> <br /> <br />
-                <input onBlur={handleInput} type="text" name="details" placeholder='Details' required /> <br /> <br />
-                <input onBlur={handleInput} type="text" name="photoURL" placeholder='Photo URL' required /> <br /> <br />
-                <input onBlur={handleInput} type="text" name="price" placeholder='Price' required /> <br /> <br />
-                <input onBlur={handleInput} type="text" name="rating" placeholder='Rating (1-5)' required /> <br /> <br />
-                <input type="submit" value="Submit" />
+                <input className='border w-[50vw] p-4' onBlur={handleInput} type="text" name="name" placeholder='Service Name' required /> <br /> <br />
+                <input className='border w-[50vw] p-4' onBlur={handleInput} type="text" name="title" placeholder='Title' required /> <br /> <br />
+                <input className='border w-[50vw] p-4' onBlur={handleInput} type="text" name="details" placeholder='Details' required /> <br /> <br />
+                <input className='border w-[50vw] p-4' onBlur={handleInput} type="text" name="photoURL" placeholder='Photo URL' required /> <br /> <br />
+                <input className='border w-[50vw] p-4' onBlur={handleInput} type="text" name="price" placeholder='Price' required /> <br /> <br />
+                <input className='border w-[50vw] p-4' onBlur={handleInput} type="text" name="rating" placeholder='Rating (1-5)' required /> <br /> <br />
+                <input className='btn btn-warning' type="submit" value="Submit" />
             </form>
         </div>
     );

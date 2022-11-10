@@ -17,12 +17,17 @@ const Reviews = ({ service }) => {
     return (
         <div>
             <AddReview service={service}></AddReview>
-            <h1 className='text-3xl'>All Reviews ({allReviews.length})</h1>
-            {
-                allReviews.map(review =>
-                    <ReviewCard key={review._id} service_review={review}> </ReviewCard>
-                )
-            }
+            <div className='text-center'>
+                <p className='divider'></p>
+                <h1 className='text-3xl'>All Reviews ({allReviews.length})</h1>
+                <div className='my-3 p-5'>
+                {
+                    allReviews.map(review =>
+                        <ReviewCard key={review._id} service_review={review}> </ReviewCard>
+                    )
+                }
+                </div>
+            </div>
         </div>
     );
 };

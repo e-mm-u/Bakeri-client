@@ -36,16 +36,16 @@ const UpdateReview = () => {
     }
 
     return (
-        <div>
+        <div className='text-center flex items-center justify-center h-[40vh]'>
             <form onSubmit={handleUpdateReview} className="form-control">
-                <div>
+                <div className='flex flex-col items-center justify-center w-[50vw]'>
                     <label className="label">
-                        <span className="label-text">Edit your review :</span>
+                        <span className="label-text text-lg font-semibold">Edit your review :</span>
                     </label>
                     <textarea onBlur={handleEditedReview} type="text" name='review' defaultValue={review} placeholder=" " className="textarea textarea-bordered h-24 w-full max-w-sm" required />
                 </div>
-                <div>
-                    <input type="submit" value="Update" className='btn' />
+                <div className='my-3'>
+                    <input type="submit" value="Update" className='btn btn-warning' />
                 </div>
             </form>
         </div>

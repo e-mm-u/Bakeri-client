@@ -14,19 +14,24 @@ const ServiceDetails = () => {
     return (
         <div>
             {/* service details  */}
-            <div>
-                <PhotoProvider>
-                    <PhotoView src={photoURL}>
-                        <img src={photoURL} alt="" />
-                    </PhotoView>
-                </PhotoProvider>
-                <h1>{name}</h1>
-                <h3>{title}</h3>
-                <small>{details}</small>
-                <p>{price}</p>
-                <p>{rating}</p>
+            <div className='card my-8 text-center'>
+                <div className='flex justify-center align-center'>
+                    <PhotoProvider>
+                        <PhotoView src={photoURL}>
+                            <img className='' src={photoURL} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
+                </div>
+               <div className='card-body '>
+               <h1 className='text-3xl font-bold'>{name}</h1>
+                <h3 className='text-xl font-bold'>{title}</h3>
+                <small className='text-lg'>{details}</small>
+                <p className='font-semibold'>Price {price}</p>
+                <p className='font-semibold'>Rating : {rating}</p>
+               </div>
             </div>
             {/* review details */}
+            <p className='divider'> ' ' ' ' ' ' ' ' ' </p>
             <Reviews service={service}></Reviews>
         </div>
     );
