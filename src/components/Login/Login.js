@@ -28,25 +28,26 @@ const Login = () => {
         login(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                // console.log('user after login', user);
-                const currentUser = { email: user.email }
+                console.log('user after login', user);
+                // const currentUser = { email: user.email }
                 form.reset();
                 alert('logged in successfully');
+                navigate(from, { replace: true });
 
-                //  get jwt token
-                fetch('http://localhost:5000/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        localStorage.setItem('jwToken', data.token)
-                        navigate(from, { replace: true });
-                    })
+                //  get jwt token __ R I P ___
+                // fetch('http://localhost:5000/jwt', {
+                //     method: 'POST',
+                //     headers: {
+                //         'content-type': 'application/json'
+                //     },
+                //     body: JSON.stringify(currentUser)
+                // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log(data);
+                //         localStorage.setItem('jwToken', data.token)
+                //         navigate(from, { replace: true });
+                //     })
 
             })
             .catch((error) => {

@@ -27,11 +27,11 @@ const Header = () => {
                                 <img src={user.photoURL} className='mask mask-hexagon-2' alt='avater' />
                             </div>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        {/* <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li> <Link to='/'>Profile</Link></li>
                             <li> <Link to='/'>Settings</Link></li>
                             <li> <button onClick={handlelogout}>Logout</button></li>
-                        </ul>
+                        </ul> */}
                     </div>
                     <li className=''> Hi, {user.displayName}</li>
                     <li> <button onClick={handlelogout}>Logout</button></li>
@@ -44,11 +44,11 @@ const Header = () => {
         }
     </>
     return (
-        <div className="flex justify-between items-center bg-base-100 mx-8 my-4">
+        <div className="flex justify-between items-center bg-amber-100 p-4">
             <div className="">
                 <div className='flex align-center gap-1'>
                     <div><img src={logo} alt="logo" /></div>
-                    <div> <Link to='/' className="btn btn-ghost normal-case text-3xl p-0">BakerY</Link></div>
+                    <div> <Link to='/' className="btn btn-ghost normal-case text-3xl p-0">Baker<span className='text-red-600 text-4xl'>i</span></Link></div>
                 </div>
             </div>
             <div className="">

@@ -6,28 +6,31 @@ import MyReviewsRow from './MyReviewsRow';
 const MyReviews = () => {
     useTitle('MyReviews-Bakeri');
 
-    const { user, logout } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [myreviews, setMyreviews] = useState([]);
 
     // ____________________________________________
     //_______fetch myreviews based on user email___
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user.email}`, {
-            // jwt
-            headers: {
-                authorization : `Bearer ${localStorage.getItem('jwToken')}`
-            }
-        })
+        fetch(`http://localhost:5000/reviews?email=${user.email}`
+            // , {
+            // // jwt
+            // headers: {
+            //     authorization: `Bearer ${localStorage.getItem('jwToken')}`
+            // }
+            // }
+        )
             .then(res => {
-                if (res.status === 401 || res.status === 403) {
-                    console.log(res.json())
-                    return logout();
-                }
+                // if (res.status === 401 || res.status === 403) {
+                //     console.log(res.json())
+                //     return logout();
+                // }
+                // console.log(res.json())
                 return res.json()
             })
             .then(data => setMyreviews(data))
 
-    }, [logout, user.email])
+    }, [user.email])
 
 
     // ____________________________________________
