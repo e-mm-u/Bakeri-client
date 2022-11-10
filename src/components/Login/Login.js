@@ -31,8 +31,23 @@ const Login = () => {
                 console.log('user after login', user);
                 // const currentUser = { email: user.email }
                 form.reset();
-                alert('logged in successfully');
+                // alert('logged in successfully');
+
                 navigate(from, { replace: true });
+                return (
+                    <div className="toast toast-center">
+                        <div className="alert alert-info">
+                            <div>
+                                <span>New mail arrived.</span>
+                            </div>
+                        </div>
+                        <div className="alert alert-success">
+                            <div>
+                                <span>Message sent successfully.</span>
+                            </div>
+                        </div>
+                    </div>
+                )
 
                 //  get jwt token __ R I P ___
                 // fetch('https://bakery-server.vercel.app/jwt', {

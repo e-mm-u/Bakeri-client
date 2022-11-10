@@ -54,30 +54,38 @@ const MyReviews = () => {
     // _______________________________________________________________________
 
     return (
-        <div>
-            <div className="overflow-x-auto w-full">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Review</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            myreviews.map(review =>
-                                <MyReviewsRow
-                                    key={review._id}
-                                    myreview={review}
-                                    handleReviewDelete={handleReviewDelete}
-                                ></MyReviewsRow>
-                            )
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <>
+            {
+                myreviews.length > 0 ?
+                    <div className='my-3'>
+                        <div className="overflow-x-auto w-full">
+                            <table className="table w-full">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Review</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        myreviews.map(review =>
+                                            <MyReviewsRow
+                                                key={review._id}
+                                                myreview={review}
+                                                handleReviewDelete={handleReviewDelete}
+                                            ></MyReviewsRow>
+                                        )
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    : <div className='h-[50vh] flex items-center justify-center text-xl font-semibold'>
+                        No reviews yet
+                    </div>
+            }
+        </>
     );
 };
 
