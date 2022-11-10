@@ -1,3 +1,51 @@
+## BAKERI is a full-stack web project for the one who loves to provide baking food service.
+
+Live site of the site : https://bakery-client.web.app/
+
+* Any customer can visit the side and 
+
+      * see all the services that is provided
+      * see blog section
+      
+* Cutomer can login by email-password registration or by google sign in
+
+* After login user can 
+
+      * add Services
+      * add reviews to any services
+      * see his/her own reviews
+      * edit his/her own review
+      * delete his/her own review
+      
+## Technology used 
+
+### Frontend
+
+      * ReactJS
+      * Tailwind CSS
+      * DaisyUI
+
+### Backend 
+
+      * ExpressJS
+      * NodeJs
+
+### Database 
+
+      * MongoDB
+      
+### Deploys
+
+      * Firebase
+      * Vercel
+      
+### Authenticaiton
+
+      * Firebase
+  
+      
+      
+      
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
