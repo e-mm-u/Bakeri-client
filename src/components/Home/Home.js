@@ -16,7 +16,7 @@ const Home = () => {
     return (
         <div className='my-4 '>
             <Banner></Banner>
-            <h1 className='divider text-3xl flex justify-center font-bold my-8'>Our Services</h1>
+            <h1 className='divider text-3xl flex justify-center font-bold my-8'>My Services</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-4'>
             {
                 services.map(service => 
