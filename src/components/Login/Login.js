@@ -35,7 +35,7 @@ const Login = () => {
                 navigate(from, { replace: true });
 
                 //  get jwt token __ R I P ___
-                // fetch('http://localhost:5000/jwt', {
+                // fetch('https://bakery-server.vercel.app/jwt', {
                 //     method: 'POST',
                 //     headers: {
                 //         'content-type': 'application/json'

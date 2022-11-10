@@ -9,7 +9,7 @@ const AddService = () => {
     const handleAddService = event => {
         event.preventDefault();
         console.log('submitted')
-        fetch('http://localhost:5000/services/', {
+        fetch('https://bakery-server.vercel.app/services/', {
             method : 'POST',
             headers : {
                 'content-type' : 'application/json'

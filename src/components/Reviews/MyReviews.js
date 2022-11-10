@@ -12,7 +12,7 @@ const MyReviews = () => {
     // ____________________________________________
     //_______fetch myreviews based on user email___
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user.email}`
+        fetch(`https://bakery-server.vercel.app/reviews?email=${user.email}`
             // , {
             // // jwt
             // headers: {
@@ -39,7 +39,7 @@ const MyReviews = () => {
     // ____________________________________________
     //_______ handle review delete ___
     const handleReviewDelete = id => {
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://bakery-server.vercel.app/reviews/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
