@@ -6,41 +6,47 @@ import MyReviewsRow from './MyReviewsRow';
 const MyReviews = () => {
     useTitle('MyReviews-Bakeri');
 
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const [myreviews, setMyreviews] = useState([]);
 
     // ____________________________________________
     //_______fetch myreviews based on user email___
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?email=${user.email}`, {
-            // pore jwt er kaj hobe ekhane
+            // jwt
+            headers: {
+                authorization : `Bearer ${localStorage.getItem('jwToken')}`
+            }
         })
             .then(res => {
-                // jwt related code hobe
+                if (res.status === 401 || res.status === 403) {
+                    console.log(res.json())
+                    return logout();
+                }
                 return res.json()
             })
             .then(data => setMyreviews(data))
 
-    }, [user?.email])
+    }, [logout, user.email])
 
 
-      // ____________________________________________
+    // ____________________________________________
     //_______ handle review update ___
-    
+
     // ____________________________________________
     //_______ handle review delete ___
     const handleReviewDelete = id => {
         fetch(`http://localhost:5000/reviews/${id}`, {
-            method : 'DELETE',
+            method: 'DELETE',
         })
-        .then( res => res.json())
-        .then( data => {
-            if(data.deletedCount > 0){
-                alert('deleted successfully')
-                const remainingReviews = myreviews.filter(review => review._id !== id);
-                setMyreviews(remainingReviews);
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    alert('deleted successfully')
+                    const remainingReviews = myreviews.filter(review => review._id !== id);
+                    setMyreviews(remainingReviews);
+                }
+            })
     }
     // _______________________________________________________________________
 
@@ -59,8 +65,8 @@ const MyReviews = () => {
                         {
                             myreviews.map(review =>
                                 <MyReviewsRow
-                                    key={review._id} 
-                                    myreview={review} 
+                                    key={review._id}
+                                    myreview={review}
                                     handleReviewDelete={handleReviewDelete}
                                 ></MyReviewsRow>
                             )

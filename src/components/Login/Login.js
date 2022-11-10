@@ -10,7 +10,7 @@ const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/' ;
+    const from = location.state?.from?.pathname || '/';
 
     if (loading) {
         return <div> Loading . . login . . </div>
@@ -22,16 +22,32 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        const user = { email, password};
-        console.log('before login',user)
+        const user = { email, password };
+        console.log('before login', user)
 
         login(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log('user after login', user);
+                // console.log('user after login', user);
+                const currentUser = { email: user.email }
                 form.reset();
                 alert('logged in successfully');
-                navigate(from, {replace : true});
+
+                //  get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('jwToken', data.token)
+                        navigate(from, { replace: true });
+                    })
+
             })
             .catch((error) => {
                 console.error(`errorCode : ${error.code} \nerrorMessage ${error.message}`)
